@@ -25,9 +25,9 @@ zsh: ## Link all the zsh files into the relevant places
 	chsh -s /usr/bin/zsh
 	ln -sf $(PWD)/zsh/.zshrc $(HOME)/.zshrc
 	ln -sf $(PWD)/zsh/paddy.zsh-theme $(HOME)/.oh-my-zsh/custom/themes/
-	ln -sf $(PWD)/common/aliases $(HOME)/.oh-my-zsh/custom/aliases.zsh
-	ln -sf $(PWD)/common/exports $(HOME)/.oh-my-zsh/custom/exports.zsh
-	ln -sf $(PWD)/common/functions $(HOME)/.oh-my-zsh/custom/functions.zsh
+	ln -sf $(PWD)/zsh/aliases $(HOME)/.oh-my-zsh/custom/aliases.zsh
+	ln -sf $(PWD)/zsh/exports $(HOME)/.oh-my-zsh/custom/exports.zsh
+	ln -sf $(PWD)/zsh/functions $(HOME)/.oh-my-zsh/custom/functions.zsh
 
 .PHONY: git
 git: ## Setup the git configuration
