@@ -1,0 +1,9 @@
+[user]
+	name = GITNAME
+	email = GITEMAIL
+[core]
+	autocrlf = true
+[credential]
+	helper = cache --timeout=360000
+[color]
+	ui = true

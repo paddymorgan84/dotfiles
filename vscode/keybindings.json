@@ -1,0 +1,10 @@
+[
+  {
+    "key": "ctrl+shift+t",
+    "command": "shellLauncher.launch"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "editor.action.transformToLowercase"
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "aws.samcli.location": "C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\sam.cmd",
+  "cSpell.language": "en-GB",
+  "editor.codeLens": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "extensions.ignoreRecommendations": false,
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "go.autocompleteUnimportedPackages": true,
+  "go.buildOnSave": "package",
+  "go.coverageDecorator": {
+    "coveredGutterStyle": "blockblue",
+    "coveredHighlightColor": "rgba(64,128,128,0.5)",
+    "type": "gutter",
+    "uncoveredGutterStyle": "slashyellow",
+    "uncoveredHighlightColor": "rgba(128,64,64,0.25)"
+  },
+  "go.coverOnSave": true,
+  "go.formatTool": "goimports",
+  "go.lintOnSave": "file",
+  "go.testOnSave": true,
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.useLanguageServer": false,
+  "go.vetOnSave": "package",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "python.formatting.autopep8Args": ["--max-line-length", "300"],
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "search.exclude": {
+    "**/node_modules": true
+  },
+  "shellLauncher.shells.windows": [
+    {
+      "label": "Git bash",
+      "shell": "C:\\Program Files\\Git\\git-bash.exe"
+    },
+    {
+      "label": "PowerShell",
+      "shell": "C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    },
+    {
+      "label": "WSL Bash",
+      "shell": "C:\\Windows\\System32\\bash.exe"
+    },
+    {
+      "label": "cmd",
+      "shell": "C:\\Windows\\system32\\cmd.exe"
+    }
+  ],
+  "terminal.integrated.fontFamily": "monospace",
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.restoreWindows": "none",
+  "window.title": "${dirty}${rootName}${separator}${activeFolderMedium}\\${activeEditorShort}",
+  "window.zoomLevel": -1,
+  "workbench.colorTheme": "Dracula",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.iconTheme": "material-icon-theme"
+}
