@@ -50,6 +50,7 @@ ifeq ("$(wildcard $(HOME)/.gitconfig)","")
 	@echo "Enter your GitHub Org";
 	@read -e org; \
 	sed -i "s/MYORG/$$org/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
+endif
 
 .PHONY: vscode
 vscode: ## Install application specific settings
