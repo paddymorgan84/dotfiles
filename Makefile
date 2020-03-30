@@ -40,16 +40,16 @@ ifeq ("$(wildcard $(HOME)/.gitconfig.local)","")
 	cp .gitconfig.local $(HOME)/.gitconfig.local
 	@echo "Enter your full name";
 	@read -e name; \
-	sed -i '' "s/GITNAME/$$name/" $(HOME)/.gitconfig
+	sed -i "s/GITNAME/$$name/" $(HOME)/.gitconfig
 	@echo "Enter your email address";
 	@read -e email; \
-	sed -i '' "s/GITEMAIL/$$email/g" $(HOME)/.gitconfig
+	sed -i "s/GITEMAIL/$$email/g" $(HOME)/.gitconfig
 	@echo "Enter your PAT";
 	@read -e pat; \
-	sed -i '' "s/MYTOKEN/$$pat/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
+	sed -i "s/MYTOKEN/$$pat/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
 	@echo "Enter your GitHub Org";
 	@read -e org; \
-	sed -i '' "s/MYORG/$$org/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
+	sed -i "s/MYORG/$$org/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
 
 .PHONY: vscode
 vscode: ## Install application specific settings
