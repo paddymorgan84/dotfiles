@@ -36,8 +36,8 @@ git: ## Setup the git configuration
 	@echo '##'
 	@echo '# Setup the local git configuration'
 	@echo '##'
-ifeq ("$(wildcard $(HOME)/.gitconfig.local)","")
-	cp .gitconfig.local $(HOME)/.gitconfig.local
+ifeq ("$(wildcard $(HOME)/.gitconfig)","")
+	cp .gitconfig $(HOME)/.gitconfig
 	@echo "Enter your full name";
 	@read -e name; \
 	sed -i "s/GITNAME/$$name/" $(HOME)/.gitconfig
