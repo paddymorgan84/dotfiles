@@ -1,5 +1,5 @@
 # paddy.zsh-theme
-# Theme is a blend of [af-magic](https://github.com/andyfleming/oh-my-zsh) and [robbyrussell](https://github.com/robbyrussell/oh-my-zsh)
+# Theme is primarily based on https://github.com/benmatselby/dotfiles/blob/master/zsh/benmatselby.zsh-theme
 
 local ret_status="%(?:%{$fg[green]%}✔︎ :%{$fg[red]%}✘ )"
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"

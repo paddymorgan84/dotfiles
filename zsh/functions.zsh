@@ -1,6 +1,7 @@
 ##
 # Sync the codebases for a branch
 #
+# from @benmatselby
 function code-sync()
 {
     for dir in */; do
@@ -22,6 +23,7 @@ function code-sync()
 ##
 # What branch is the codebase on and red/green depending if it's dirty or not
 #
+# from @benmatselby
 function code-branch()
 {
     local reset=$'\e[0m'
@@ -44,6 +46,7 @@ function code-branch()
 ##
 # Based on a cli config ID set the environment variables
 #
+# from @benmatselby
 function set-aws-creds()
 {
     # Check that the AWS profile parameter has been provided
@@ -72,6 +75,7 @@ function set-aws-creds()
 ##
 # Clear down the AWS_* environment variables
 #
+# from @benmatselby
 function reset-aws-creds()
 {
     unset AWS_ACCESS_KEY_ID
