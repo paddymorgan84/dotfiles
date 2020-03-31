@@ -19,10 +19,12 @@ provision: zsh git vscode ## Provision my dotfiles
 
 .PHONY: zsh
 zsh: ## Link all the zsh files into the relevant places
+ifeq ("$(wildcard $(HOME)/.oh-my-zsh)","")
 	curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o install-oh-my-zsh.sh;
 	sh install-oh-my-zsh.sh
 	rm install-oh-my-zsh.sh
 	chsh -s /usr/bin/zsh
+endif
 	ln -sf $(PWD)/zsh/.zshrc $(HOME)/.zshrc
 	ln -sf $(PWD)/zsh/paddy.zsh-theme $(HOME)/.oh-my-zsh/custom/themes/
 	ln -sf $(PWD)/zsh/aliases.zsh $(HOME)/.oh-my-zsh/custom/aliases.zsh
@@ -36,8 +38,8 @@ git: ## Setup the git configuration
 	@echo '##'
 	@echo '# Setup the local git configuration'
 	@echo '##'
-ifeq ("$(wildcard $(HOME)/.gitconfig)","")
-	cp .gitconfig $(HOME)/.gitconfig
+ifeq ("$(wildcard $(HOME)/.gitconfig.local)","")
+	cp $(PWD)/git/.gitconfig.local $(HOME)/.gitconfig.local
 	@echo "Enter your full name";
 	@read -e name; \
 	sed -i "s/GITNAME/$$name/" $(HOME)/.gitconfig

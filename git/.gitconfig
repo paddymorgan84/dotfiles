@@ -1,6 +1,8 @@
+[include]
+	path = ~/.gitconfig.local
 [user]
-	name = GITNAME
-	email = GITEMAIL
+	name = paddymorgan84
+	email = patrickmorgan1984@gmail.com
 [core]
 	autocrlf = true
 [credential]
