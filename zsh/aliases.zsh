@@ -2,6 +2,9 @@
 alias ls='ls -lGh'
 alias envs='env | sort'
 
+# Files
+alias lfends='find . -type f -exec sed -i 's/\r$//' {} \;' #Convert all CRLF line endings to LF
+
 # Helper to open stuff in Chrome
 alias open-chrome='open -a "Google Chrome"'
 
