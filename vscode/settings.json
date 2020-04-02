@@ -38,7 +38,10 @@
   "go.useLanguageServer": false,
   "go.vetOnSave": "package",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "python.formatting.autopep8Args": ["--max-line-length", "300"],
+  "python.formatting.autopep8Args": [
+    "--max-line-length",
+    "300"
+  ],
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "search.exclude": {
@@ -66,7 +69,7 @@
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.restoreWindows": "none",
-  "window.title": "${dirty}${rootName}${separator}${activeFolderMedium}\\${activeEditorShort}",
+  "window.title": "${dirty}${rootName}${separator}${activeFolderMedium}/${activeEditorShort}",
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Dracula",
   "workbench.editor.closeOnFileDelete": true,

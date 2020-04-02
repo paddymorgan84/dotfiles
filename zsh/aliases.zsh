@@ -23,8 +23,8 @@ alias gdn='git diff --name-only'
 alias gdns='git diff --name-status'
 
 # Quick folders
-alias work="cd /mnt/c/code/git/emisgroup"
-alias mine="cd /mnt/c/code/git/paddymorgan84"
+alias work="cd ~/git/emisgroup"
+alias mine="cd ~/git/paddymorgan84"
 
 # Weather
 alias weather='curl wttr.in'
