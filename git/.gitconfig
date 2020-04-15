@@ -9,3 +9,7 @@
 	helper = cache --timeout=360000
 [color]
 	ui = true
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE

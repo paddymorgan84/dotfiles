@@ -15,12 +15,13 @@ explain: ## Provide the explanation of how to use the Makefile
 	@cat Makefile* | grep -E '^[a-zA-Z_-]+:.*?## .*$$' | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: provision
-provision: zsh git vscode ## Provision my dotfiles
+provision: zsh git ## Provision my dotfiles
 
 .PHONY: zsh
 zsh: ## Link all the zsh files into the relevant places
 ifeq ("$(wildcard $(HOME)/.oh-my-zsh)","")
-	curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o install-oh-my-zsh.sh;
+	sudo apt install zsh
+	curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o install-oh-my-zsh.sh
 	sh install-oh-my-zsh.sh
 	rm install-oh-my-zsh.sh
 	chsh -s /usr/bin/zsh
@@ -41,20 +42,15 @@ git: ## Setup the git configuration
 ifeq ("$(wildcard $(HOME)/.gitconfig.local)","")
 	cp $(PWD)/git/.gitconfig.local $(HOME)/.gitconfig.local
 	@echo "Enter your full name";
-	@read -e name; \
+	@read name; \
 	sed -i "s/GITNAME/$$name/" $(HOME)/.gitconfig
 	@echo "Enter your email address";
-	@read -e email; \
+	@read email; \
 	sed -i "s/GITEMAIL/$$email/g" $(HOME)/.gitconfig
 	@echo "Enter your PAT";
-	@read -e pat; \
+	@read pat; \
 	sed -i "s/MYTOKEN/$$pat/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
 	@echo "Enter your GitHub Org";
-	@read -e org; \
+	@read org; \
 	sed -i "s/MYORG/$$org/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
 endif
-
-.PHONY: vscode
-vscode: ## Install application specific settings
-	ln -sf $(PWD)/vscode/settings.json "/mnt/c/users/patrick.morgan/appdata/roaming/code/user/settings.json"
-	ln -sf $(PWD)/vscode/keybindings.json "/mnt/c/users/patrick.morgan/appdata/roaming/code/user/keybindings.json"
