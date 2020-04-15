@@ -24,3 +24,6 @@ echo "\e[92mInstalling Ansible...\e[0m"
 sudo apt install ansible
 echo "\e[92mInstalling Zsh...\e[0m"
 sudo apt install zsh
+echo "\e[92mInstalling Gh cli...\e[0m"
+wget https://github.com/cli/cli/releases/download/v0.6.4/gh_0.6.4_linux_amd64.deb
+sudo dpkg -i gh_*_linux_amd64.deb                                                                                                                                1 ↵
