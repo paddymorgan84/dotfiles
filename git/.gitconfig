@@ -5,6 +5,7 @@
 	email = patrickmorgan1984@gmail.com
 [core]
 	autocrlf = input
+	editor = code --wait
 [credential]
 	helper = cache --timeout=360000
 [color]
