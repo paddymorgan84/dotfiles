@@ -21,27 +21,9 @@
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.confirmSync": false,
-  "go.autocompleteUnimportedPackages": true,
-  "go.buildOnSave": "package",
-  "go.coverageDecorator": {
-    "coveredGutterStyle": "blockblue",
-    "coveredHighlightColor": "rgba(64,128,128,0.5)",
-    "type": "gutter",
-    "uncoveredGutterStyle": "slashyellow",
-    "uncoveredHighlightColor": "rgba(128,64,64,0.25)"
-  },
-  "go.coverOnSave": true,
-  "go.formatTool": "goimports",
-  "go.lintOnSave": "file",
-  "go.testOnSave": true,
-  "go.useCodeSnippetsOnFunctionSuggest": true,
-  "go.useLanguageServer": false,
-  "go.vetOnSave": "package",
+  "go.useLanguageServer": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "python.formatting.autopep8Args": [
-    "--max-line-length",
-    "300"
-  ],
+  "python.formatting.autopep8Args": ["--max-line-length", "300"],
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "search.exclude": {
@@ -73,5 +55,7 @@
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Dracula",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "sync.gist": "9e0c44bc946e03f885ef58a9d731b861",
+  "editor.tabSize": 2
 }
