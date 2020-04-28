@@ -21,6 +21,7 @@ alias localip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2"
 # Git
 alias gdn='git diff --name-only'
 alias gdns='git diff --name-status'
+alias grmb='git branch --merged master | grep -v "master" | xargs git branch -D'
 
 # Quick folders
 alias work="cd ~/git/emisgroup"
