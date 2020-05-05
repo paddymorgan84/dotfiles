@@ -69,7 +69,7 @@ function set-aws-creds()
 
     # Echo the export commands required to set the environment variables
     # to authenticate via MFA when using the CDK CLI
-    echo -e "export AWS_ACCESS_KEY_ID=${AccessKeyId}\nexport AWS_SECRET_ACCESS_KEY=${SecretAccessKey}\nexport AWS_SESSION_TOKEN=${SessionToken}\n"
+    echo -e "export AWS_ACCESS_KEY_ID=${AccessKeyId}\nexport AWS_SECRET_ACCESS_KEY=${SecretAccessKey}\nexport AWS_SESSION_TOKEN=${SessionToken}\n" | clip.exe
 }
 
 ##
