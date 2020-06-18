@@ -68,7 +68,7 @@ ZSH_THEME="paddy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws terraform)
+plugins=(git aws terraform docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -159,3 +159,11 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+export DOCKER_HOST=tcp://localhost:2375
+
+
+### Load aliases
+if [ -f ~/.aliases ]; then
+  . ~/.aliases
+fi

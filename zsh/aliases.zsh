@@ -33,5 +33,8 @@ alias weather='curl wttr.in'
 # Random
 alias whatalias='alias | grep '
 
+# Terraform
+alias tf='terraform'
+
 # EMIS
 alias clone-all-emis-repos='cd ~/git/emisgroup/blacksmiths-hammer/clone-repos && ORG=emisgroup TARGET=~/git/emisgroup ./clone.sh'
