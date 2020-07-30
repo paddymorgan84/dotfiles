@@ -38,3 +38,6 @@ alias tf='terraform'
 
 # EMIS
 alias clone-all-emis-repos='cd ~/git/emisgroup/blacksmiths-hammer/clone-repos && ORG=emisgroup TARGET=~/git/emisgroup ./clone.sh'
+
+# WSL2
+alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
