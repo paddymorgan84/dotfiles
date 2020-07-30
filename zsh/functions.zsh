@@ -21,6 +21,30 @@ function code-sync()
 }
 
 ##
+# Clean all local branches
+#
+function clean-locals()
+{
+    for dir in */; do
+        (
+            echo "${dir}"
+            cd "${dir}" > /dev/null 2>&1 || exit
+            if [ -d .git ]; then
+                cmd=$(git branch --merged master | grep -q -v "master")
+                if [ -z $cmd ]; then
+                    echo 'No local branches to delete, skipping...'
+                else
+                    git branch --merged master | grep -v "master" | xargs git branch -D
+                fi
+            else
+                echo 'Not a git repo, skipping...'
+            fi
+            echo ""
+        )
+    done
+}
+
+##
 # What branch is the codebase on and red/green depending if it's dirty or not
 #
 # from @benmatselby
