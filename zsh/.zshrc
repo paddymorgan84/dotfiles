@@ -160,8 +160,6 @@ elif type compctl &>/dev/null; then
 fi
 ###-end-npm-completion-###
 
-export DOCKER_HOST=tcp://localhost:2375
-
 
 ### Load aliases
 if [ -f ~/.aliases ]; then
