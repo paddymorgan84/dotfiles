@@ -5,8 +5,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "aws.samcli.location": "C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\sam.cmd",
-  "cSpell.language": "en-GB",
   "editor.codeLens": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "Fira Code",
@@ -21,7 +19,7 @@
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.confirmSync": false,
-  "go.useLanguageServer": true,
+  "go.useLanguageServer": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "python.formatting.autopep8Args": ["--max-line-length", "300"],
   "python.linting.enabled": true,
@@ -29,24 +27,6 @@
   "search.exclude": {
     "**/node_modules": true
   },
-  "shellLauncher.shells.windows": [
-    {
-      "label": "Git bash",
-      "shell": "C:\\Program Files\\Git\\git-bash.exe"
-    },
-    {
-      "label": "PowerShell",
-      "shell": "C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe"
-    },
-    {
-      "label": "WSL Bash",
-      "shell": "C:\\Windows\\System32\\bash.exe"
-    },
-    {
-      "label": "cmd",
-      "shell": "C:\\Windows\\system32\\cmd.exe"
-    }
-  ],
   "terminal.integrated.fontFamily": "monospace",
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe",
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -57,5 +37,19 @@
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "sync.gist": "9e0c44bc946e03f885ef58a9d731b861",
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "go.formatTool": "goimports",
+  "[go]": {
+    "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "*.Jenkinsfile": "groovy"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "default",
+      "filenamePattern": "git-rebase-todo"
+    }
+  ]
 }
