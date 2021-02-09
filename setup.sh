@@ -1,18 +1,18 @@
 #!/bin/sh
 
-cp $(PWD)/git/.gitconfig.local $(HOME)/.gitconfig.local
+cp $PWD/git/.gitconfig.local $HOME/.gitconfig.local
 echo "Enter your full name";
 read name; \
-sed -i "s/GITNAME/$$name/" $(HOME)/.gitconfig
+sed -i "s/GITNAME/$$name/" $HOME/.gitconfig
 echo "Enter your email address";
 read email; \
-sed -i "s/GITEMAIL/$$email/g" $(HOME)/.gitconfig
+sed -i "s/GITEMAIL/$$email/g" $HOME/.gitconfig
 echo "Enter your PAT";
 read pat; \
-sed -i "s/MYTOKEN/$$pat/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
+sed -i "s/MYTOKEN/$$pat/g" $HOME/.oh-my-zsh/custom/exports.zsh
 echo "Enter your GitHub Org";
 read org; \
-sed -i "s/MYORG/$$org/g" $(HOME)/.oh-my-zsh/custom/exports.zsh
+sed -i "s/MYORG/$$org/g" $HOME/.oh-my-zsh/custom/exports.zsh
 
 echo "\e[92mUpdating apt...\e[0m"
 sudo apt update
