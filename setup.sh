@@ -4,12 +4,40 @@ set -e
 set -f
 
 printf "Set up my machine:\n"
+IGNORE_PRE_REQS=${IGNORE_PRE_REQS:-false}
 IGNORE_OMZ=${IGNORE_OMZ:-false}
 IGNORE_DOTFILES=${IGNORE_DOTFILES:-false}
 IGNORE_GIT=${IGNORE_GIT:-false}
+IGNORE_SECRETS=${IGNORE_SECRETS:-false}
+printf " - IGNORE_PRE_REQS = %s\n" "${IGNORE_PRE_REQS}"
 printf " - IGNORE_OMZ      = %s\n" "${IGNORE_OMZ}"
 printf " - IGNORE_DOTFILES = %s\n" "${IGNORE_DOTFILES}"
 printf " - IGNORE_GIT      = %s\n" "${IGNORE_GIT}"
+printf " - IGNORE_SECRETS  = %s\n" "${IGNORE_SECRETS}"
+
+
+###
+# Install pre-requisites
+###
+if ! ${IGNORE_PRE_REQS} ; then
+  printf "\n🚀 Installing pre-requisites\n"
+
+  apt-get clean
+  apt-get update
+  apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    gcc \
+    git \
+    gnupg-agent \
+    jq \
+    make \
+    shellcheck \
+    zip \
+    unzip \
+    zsh \
+    software-properties-common
+fi
 
 
 ###
@@ -38,11 +66,11 @@ fi
 ###
 if ! ${IGNORE_DOTFILES} ; then
 printf "\n🚀 Installing dotfiles\n"
-ln -sf "$(PWD)"/zsh/.zshrc "${HOME}"/.zshrc
-ln -sf "$(PWD)"/zsh/paddy.zsh-theme "${HOME}"/.oh-my-zsh/custom/themes/
-ln -sf "$(PWD)"/zsh/aliases.zsh "${HOME}"/.oh-my-zsh/custom/aliases.zsh
-ln -sf "$(PWD)"/zsh/exports.zsh "${HOME}"/.oh-my-zsh/custom/exports.zsh
-ln -sf "$(PWD)"/zsh/functions.zsh "${HOME}"/.oh-my-zsh/custom/functions.zsh
+ln -sf "${PWD}"/zsh/.zshrc "${HOME}"/.zshrc
+ln -sf "${PWD}"/zsh/paddy.zsh-theme "${HOME}"/.oh-my-zsh/custom/themes/
+ln -sf "${PWD}"/zsh/aliases.zsh "${HOME}"/.oh-my-zsh/custom/aliases.zsh
+ln -sf "${PWD}"/zsh/exports.zsh "${HOME}"/.oh-my-zsh/custom/exports.zsh
+ln -sf "${PWD}"/zsh/functions.zsh "${HOME}"/.oh-my-zsh/custom/functions.zsh
 fi
 
 
@@ -56,10 +84,28 @@ if [ ! -f "${HOME}/.gitconfig.local" ] ; then
 
   echo "Enter your full name";
   read -re var
-  sed -i '' "s/GITNAME/${var}/" "${HOME}/.gitconfig.local"
+  sed -i "s/GITNAME/${var}/" "${HOME}/.gitconfig.local"
 
   echo "Enter your email address";
   read -re var
-  sed -i '' "s/GITEMAIL/${var}/" "${HOME}/.gitconfig.local"
+  sed -i "s/GITEMAIL/${var}/" "${HOME}/.gitconfig.local"
+fi
+fi
+
+###
+# Install sensitive information
+###
+if ! ${IGNORE_OMZ} ; then
+printf "\n🚀 Installing oh-my-zsh\n"
+if [ -d "${HOME}/.oh-my-zsh" ]; then
+  echo "Enter your GitHub PAT";
+	read -re pat
+	sed -i "s/MYTOKEN/${pat}/g" "${HOME}"/.oh-my-zsh/custom/exports.zsh
+
+	echo "Enter your GitHub Org";
+	read -re org
+	sed -i "s/MYORG/${org}/g" "${HOME}"/.oh-my-zsh/custom/exports.zsh
+else
+  printf "oh-my-zsh isn't installed, skipping sensitive information\n"
 fi
 fi
