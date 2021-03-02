@@ -43,6 +43,6 @@ alias clone-all-emis-repos='cd ~/git/emisgroup/blacksmiths-hammer/clone-repos &&
 alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
 
 # Docker
-alias dsc="docker stop $(docker ps -aq)" # Stop all docker containers currently running
-alias drc="docker rm -vf $(docker ps -a -q)" # Remove all stopped docker containers
-alias dri= "docker rmi -f $(docker images -a -q)" # Remove all docker images
+alias dsc='docker stop $(docker ps -aq)' # Stop all docker containers currently running
+alias drc='docker rm -vf $(docker ps -a -q)' # Remove all stopped docker containers
+alias dri='docker rmi -f $(docker images -a -q)' # Remove all docker images
