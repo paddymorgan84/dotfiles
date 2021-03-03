@@ -20,7 +20,7 @@ printf " - IGNORE_SECRETS  = %s\n" "${IGNORE_SECRETS}"
 # Install pre-requisites
 ###
 if ! ${IGNORE_PRE_REQS} ; then
-  printf "\n🚀 Installing pre-requisites\n"
+  printf "\n🔧 Installing pre-requisites\n"
 
   apt-get clean
   apt-get update
@@ -89,7 +89,7 @@ fi
 ###
 # Install sensitive information
 ###
-if ! ${IGNORE_OMZ} ; then
+if ! ${IGNORE_SECRETS} ; then
   printf "\n🔧 Installing oh-my-zsh\n"
   if [ -d "${HOME}/.oh-my-zsh" ]; then
     echo "Enter your GitHub PAT";
