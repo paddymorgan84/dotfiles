@@ -1,39 +1,64 @@
 [
+  //Terminal
   {
-      "key": "ctrl+up",
-      "command": "workbench.action.terminal.resizePaneUp",
-      "when": "terminalFocus && terminalProcessSupported"
+    "key": "ctrl+up",
+    "command": "workbench.action.terminal.resizePaneUp",
+    "when": "terminalFocus && terminalProcessSupported"
   },
   {
-      "key": "ctrl+down",
-      "command": "workbench.action.terminal.resizePaneDown",
-      "when": "terminalFocus && terminalProcessSupported"
+    "key": "ctrl+down",
+    "command": "workbench.action.terminal.resizePaneDown",
+    "when": "terminalFocus && terminalProcessSupported"
   },
   {
-      "key": "ctrl+s",
-      "command": "workbench.action.terminal.split",
-      "when": "terminalFocus && terminalProcessSupported"
+    "key": "ctrl+s",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported"
   },
   {
-      "key": "ctrl+shift+5",
-      "command": "-workbench.action.terminal.split",
-      "when": "terminalFocus && terminalProcessSupported"
+    "key": "ctrl+shift+5",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported"
   },
   {
-      "key": "ctrl+alt+l",
-      "command": "editor.action.transformToLowercase",
-      "when": "editorTextFocus && !editorReadOnly"
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.terminal.focus",
+    "when": "!terminalFocus"
+  },
+
+  //Editor
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
   },
   {
-      "key": "ctrl+shift+t",
-      "command": "workbench.action.terminal.focus"
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
   },
   {
-      "key": "ctrl+shift+f4",
-      "command": "workbench.action.reopenClosedEditor"
+    "key": "ctrl+alt+l",
+    "command": "editor.action.transformToLowercase",
+    "when": "editorTextFocus && !editorReadOnly"
   },
   {
-      "key": "ctrl+shift+t",
-      "command": "-workbench.action.reopenClosedEditor"
+    "key": "ctrl+shift+f4",
+    "command": "workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "-workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
   }
-  ]
+]
