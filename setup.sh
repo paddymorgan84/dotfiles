@@ -71,7 +71,13 @@ fi
 ###
 if ! ${IGNORE_DOTFILES} ; then
   printf "\n🔧 Installing dotfiles\n"
-  ln -sf "${PWD}"/zsh/.zshenv "${HOME}"/.zshenv
+
+  ## Don't need to do this with devcontainers. .zshenv was added to solve a environment variable mapping issue
+  ## https://github.com/microsoft/vscode-remote-release/issues/3456
+  if [[ -z ${REMOTE_CONTAINERS} ]] ; then
+    ln -sf "${PWD}"/zsh/.zshenv "${HOME}"/.zshenv
+  fi
+
   ln -sf "${PWD}"/zsh/.zshrc "${HOME}"/.zshrc
   ln -sf "${PWD}"/zsh/paddy.zsh-theme "${HOME}"/.oh-my-zsh/custom/themes/
   ln -sf "${PWD}"/zsh/aliases.zsh "${HOME}"/.oh-my-zsh/custom/aliases.zsh
