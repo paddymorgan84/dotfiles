@@ -5,6 +5,10 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "cSpell.language": "en-GB",
+  "dotfiles.repository": "paddymorgan84/dotfiles",
+  "dotfiles.targetPath": "~/dotfiles",
+  "dotfiles.installCommand": "~/dotfiles/setup.sh",
   "editor.codeLens": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "Fira Code",
@@ -28,17 +32,15 @@
     "**/node_modules": true
   },
   "terminal.integrated.fontFamily": "monospace",
-  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.restoreWindows": "none",
   "window.title": "${dirty}${rootName}${separator}${activeFolderMedium}/${activeEditorShort}",
-  "window.zoomLevel": -1,
   "workbench.colorTheme": "Dracula",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "sync.gist": "9e0c44bc946e03f885ef58a9d731b861",
   "editor.tabSize": 2,
-  "go.formatTool": "goimports",
+  "go.formatTool": "gofmt",
   "[go]": {
     "editor.formatOnSave": true
   },
@@ -51,5 +53,6 @@
       "viewType": "default",
       "filenamePattern": "git-rebase-todo"
     }
-  ]
+  ],
+  "window.zoomLevel": -1
 }

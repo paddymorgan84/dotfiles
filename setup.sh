@@ -17,6 +17,17 @@ printf " - IGNORE_SECRETS  = %s\n" "${IGNORE_SECRETS}"
 
 
 ###
+# Identify if I'm running on VS Code dev container. If I am, I only want the dotfiles.
+###
+if [[ ${REMOTE_CONTAINERS} ]] ; then
+  IGNORE_PRE_REQS=true
+  IGNORE_OMZ=true
+  IGNORE_GIT=true
+  IGNORE_SECRETS=true
+fi
+
+
+###
 # Install pre-requisites
 ###
 if ! ${IGNORE_PRE_REQS} ; then
