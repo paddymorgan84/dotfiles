@@ -77,6 +77,7 @@ if ! ${IGNORE_DOTFILES} ; then
   ln -sf "${PWD}"/zsh/aliases.zsh "${HOME}"/.oh-my-zsh/custom/aliases.zsh
   ln -sf "${PWD}"/zsh/exports.zsh "${HOME}"/.oh-my-zsh/custom/exports.zsh
   ln -sf "${PWD}"/zsh/functions.zsh "${HOME}"/.oh-my-zsh/custom/functions.zsh
+  ln -sf "${PWD}"/git/.gitconfig "${HOME}"/.gitconfig
 fi
 
 
