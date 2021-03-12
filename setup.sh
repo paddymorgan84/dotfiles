@@ -60,6 +60,7 @@ fi
 ###
 if ! ${IGNORE_DOTFILES} ; then
   printf "\n🔧 Installing dotfiles\n"
+  ln -sf "${PWD}"/zsh/.zshenv "${HOME}"/.zshenv
   ln -sf "${PWD}"/zsh/.zshrc "${HOME}"/.zshrc
   ln -sf "${PWD}"/zsh/paddy.zsh-theme "${HOME}"/.oh-my-zsh/custom/themes/
   ln -sf "${PWD}"/zsh/aliases.zsh "${HOME}"/.oh-my-zsh/custom/aliases.zsh
@@ -94,11 +95,11 @@ if ! ${IGNORE_SECRETS} ; then
   if [ -d "${HOME}/.oh-my-zsh" ]; then
     echo "Enter your GitHub PAT";
     read -re pat
-    sed -i "s/MYTOKEN/${pat}/g" "${HOME}"/.oh-my-zsh/custom/exports.zsh
+    sed -i "s/MYTOKEN/${pat}/g" "${HOME}"/.zshenv
 
     echo "Enter your GitHub Org";
     read -re org
-    sed -i "s/MYORG/${org}/g" "${HOME}"/.oh-my-zsh/custom/exports.zsh
+    sed -i "s/MYORG/${org}/g" "${HOME}"/.zshenv
   else
     printf "oh-my-zsh isn't installed, skipping sensitive information\n"
   fi

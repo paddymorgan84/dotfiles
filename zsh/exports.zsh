@@ -9,7 +9,3 @@ export PATH=$PATH:$GOROOT/bin
 # AWS
 export AWS_CONFIG_FILE=/mnt/c/Users/patrick.morgan/.aws/config
 export AWS_SHARED_CREDENTIALS_FILE=/mnt/c/Users/patrick.morgan/.aws/credentials
-
-# GitHub
-export GITHUB_TOKEN=MYTOKEN
-export GITHUB_ORG=MYORG
