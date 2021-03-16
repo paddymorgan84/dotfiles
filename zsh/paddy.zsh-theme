@@ -5,9 +5,9 @@ local ret_status="%(?:%{$fg[green]%}✔︎ :%{$fg[red]%}✘ )"
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 if [ -z "${REMOTE_CONTAINERS}" ]; then
-  name="paddy in 🐳"
-else
   name="paddy"
+else
+  name="paddy in 🐳"
 fi
 
 # color vars
