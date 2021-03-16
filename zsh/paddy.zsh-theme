@@ -4,6 +4,12 @@
 local ret_status="%(?:%{$fg[green]%}✔︎ :%{$fg[red]%}✘ )"
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
+if [ -z "${REMOTE_CONTAINERS}" ]; then
+  name="paddy in 🐳"
+else
+  name="paddy"
+fi
+
 # color vars
 eval my_gray='$FG[246]'
 eval my_orange='$FG[214]'
@@ -16,7 +22,7 @@ prompt_aws() {
 
 # primary prompt
 PROMPT='
-${ret_status} $my_gray paddy @ %*%{$reset_color%}%  $FG[032]%~ \
+${ret_status} $my_gray $name @ %*%{$reset_color%}%  $FG[032]%~ \
 $(git_prompt_info)$(prompt_aws) \
 %{$fg_bold[cyan]%}$(tf_prompt_info)%{$reset_color%} \
 $FG[105]%(!.#.»)%{$reset_color%} '
