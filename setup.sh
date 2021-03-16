@@ -84,6 +84,7 @@ if ! ${IGNORE_DOTFILES} ; then
   ln -sf "${PWD}"/zsh/exports.zsh "${HOME}"/.oh-my-zsh/custom/exports.zsh
   ln -sf "${PWD}"/zsh/functions.zsh "${HOME}"/.oh-my-zsh/custom/functions.zsh
   ln -sf "${PWD}"/git/.gitconfig "${HOME}"/.gitconfig
+  ln -sf "${PWD}"/gh/config.yml "${HOME}"/.config/gh/config.yml
 fi
 
 
