@@ -33,9 +33,9 @@ fi
 if ! ${IGNORE_PRE_REQS} ; then
   printf "\n🔧 Installing pre-requisites\n"
 
-  apt-get clean
-  apt-get update
-  apt-get install -y --no-install-recommends \
+  sudo apt-get clean
+  sudo apt-get update
+  sudo apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
     gcc \
