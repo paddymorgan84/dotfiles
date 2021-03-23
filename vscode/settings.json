@@ -1,4 +1,8 @@
 {
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true
+  },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -6,16 +10,21 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.language": "en-GB",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "dotfiles.installCommand": "~/dotfiles/setup.sh",
   "dotfiles.repository": "paddymorgan84/dotfiles",
   "dotfiles.targetPath": "~/dotfiles",
-  "dotfiles.installCommand": "~/dotfiles/setup.sh",
   "editor.codeLens": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
   "extensions.ignoreRecommendations": false,
+  "files.associations": {
+    "*.Jenkinsfile": "groovy"
+  },
   "files.autoSave": "onFocusChange",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
@@ -23,7 +32,8 @@
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.confirmSync": false,
-  "go.useLanguageServer": false,
+  "go.formatTool": "gofmt",
+  "go.useLanguageServer": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "python.formatting.autopep8Args": ["--max-line-length", "300"],
   "python.linting.enabled": true,
@@ -31,28 +41,19 @@
   "search.exclude": {
     "**/node_modules": true
   },
-  "terminal.integrated.fontFamily": "monospace",
+  "sync.gist": "9e0c44bc946e03f885ef58a9d731b861",
+  "terminal.integrated.fontFamily": "Fira Code",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.restoreWindows": "none",
   "window.title": "${dirty}${rootName}${separator}${activeFolderMedium}/${activeEditorShort}",
+  "window.zoomLevel": -1,
   "workbench.colorTheme": "Dracula",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.iconTheme": "material-icon-theme",
-  "sync.gist": "9e0c44bc946e03f885ef58a9d731b861",
-  "editor.tabSize": 2,
-  "go.formatTool": "gofmt",
-  "[go]": {
-    "editor.formatOnSave": true
-  },
-  "files.associations": {
-    "*.Jenkinsfile": "groovy"
-  },
-  "diffEditor.ignoreTrimWhitespace": false,
   "workbench.editorAssociations": [
     {
-      "viewType": "default",
-      "filenamePattern": "git-rebase-todo"
+      "filenamePattern": "git-rebase-todo",
+      "viewType": "default"
     }
   ],
-  "window.zoomLevel": -1
+  "workbench.iconTheme": "material-icon-theme"
 }
