@@ -46,3 +46,10 @@ alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a 
 alias dsc='docker stop $(docker ps -aq)' # Stop all docker containers currently running
 alias drc='docker rm -vf $(docker ps -a -q)' # Remove all stopped docker containers
 alias dri='docker rmi -f $(docker images -a -q)' # Remove all docker images
+
+# VS Code
+alias dotfiles='code ~/git/paddymorgan84/dotfiles'
+alias personal='code ~/git/paddymorgan84/personal-development'
+alias presentations='code ~/git/paddymorgan84/presentations'
+alias university='code ~/git/paddymorgan84/university'
+alias fpl='code ~/git/paddymorgan84/fpl'
