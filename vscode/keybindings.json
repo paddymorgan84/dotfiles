@@ -16,14 +16,14 @@
     "when": "terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+shift+5",
-    "command": "-workbench.action.terminal.split",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
     "key": "ctrl+shift+t",
     "command": "workbench.action.terminal.focus",
     "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+x",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && terminalProcessSupported"
   },
 
   //Editor
