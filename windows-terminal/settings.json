@@ -49,6 +49,7 @@
       "keys": "alt+shift+d"
     }
   ],
+  "launchMode": "maximized",
   // A profile specifies a command to execute paired with information about how it should look and feel.
   // Each one of them will appear in the 'New Tab' dropdown,
   //   and can be invoked from the commandline with `wt.exe -p xxx`
@@ -83,23 +84,6 @@
         "name": "Command Prompt"
       },
       {
-        "fontSize": 10,
-        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-        "hidden": false,
-        "name": "Azure Cloud Shell",
-        "source": "Windows.Terminal.Azure"
-      },
-      {
-        "background": "#350425",
-        "commandline": "multipass shell",
-        "cursorShape": "filledBox",
-        "fontFace": "Ubuntu Mono",
-        "guid": "{aaaa9e6d-1e09-4be6-b76c-82b4ba1885fb}",
-        "historySize": 50000,
-        "icon": "C:/Program Files/Multipass/bin/multipass_wt.ico",
-        "name": "Multipass"
-      },
-      {
         "commandline": "powershell.exe",
         "fontSize": 10,
         // Make changes here to the powershell.exe profile.
@@ -107,6 +91,16 @@
         "hidden": false,
         "name": "Space",
         "backgroundImage": "C:/Users/GroupIT/oneDrive/Pictures/space.gif"
+      },
+      {
+        "guid": "{a96860c6-5945-4e66-bcce-fab8f03df0c0}",
+        "hidden": false,
+        "name": "City",
+        "fontFace": "Fira Code",
+        "source": "Windows.Terminal.Wsl",
+        "startingDirectory": "\\\\wsl$\\Ubuntu-18.04\\home\\paddy",
+        "colorScheme": "Dracula",
+        "backgroundImage": "C:/Users/GroupIT/oneDrive/Pictures/city.gif"
       }
     ]
   },
