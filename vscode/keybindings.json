@@ -60,5 +60,9 @@
     "key": "ctrl+shift+t",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+w ctrl+t",
+    "command": "windows-terminal.open"
   }
 ]
