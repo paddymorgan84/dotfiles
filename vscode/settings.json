@@ -4,7 +4,7 @@
     "editor.formatOnSave": true
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -43,10 +43,10 @@
   },
   "sync.gist": "9e0c44bc946e03f885ef58a9d731b861",
   "terminal.integrated.fontFamily": "Fira Code",
+  "terminal.integrated.shell.linux": "/bin/zsh",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.restoreWindows": "none",
   "window.title": "${dirty}${rootName}${separator}${activeFolderMedium}/${activeEditorShort}",
-  "window.zoomLevel": -1,
   "workbench.colorTheme": "Dracula",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editorAssociations": [
@@ -55,5 +55,17 @@
       "viewType": "default"
     }
   ],
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "welcomePage",
+  "go.toolsManagement.autoUpdate": true,
+  "material-icon-theme.folders.theme": "specific",
+  "material-icon-theme.folders.color": "#90a4ae",
+  "material-icon-theme.opacity": 1,
+  "material-icon-theme.saturation": 0.7,
+  "peacock.affectTitleBar": false,
+  "peacock.affectStatusBar": false,
+  "peacock.affectTabActiveBorder": true,
+  "openInGitHub.providerType": "github",
+  "window.zoomLevel": -1,
+  "liveshare.audio.joinCallBehavior": "accept"
 }
