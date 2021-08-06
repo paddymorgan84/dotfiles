@@ -49,7 +49,7 @@ alias dri='docker rmi -f $(docker images -a -q)' # Remove all docker images
 
 # VS Code
 alias dotfiles='code ~/git/paddymorgan84/dotfiles'
-alias personal='code ~/git/paddymorgan84/personal-development'
+alias journal='code ~/git/paddymorgan84/journal'
 alias presentations='code ~/git/paddymorgan84/presentations'
 alias university='code ~/git/paddymorgan84/university'
 alias fplgo='code ~/git/paddymorgan84/fpl'
