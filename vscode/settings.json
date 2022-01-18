@@ -1,16 +1,4 @@
 {
-  "[go]": {
-    "editor.defaultFormatter": "golang.go",
-    "editor.formatOnSave": true
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "cSpell.language": "en-GB",
-  "diffEditor.ignoreTrimWhitespace": false,
   "dotfiles.installCommand": "~/dotfiles/setup.sh",
   "dotfiles.repository": "paddymorgan84/dotfiles",
   "dotfiles.targetPath": "~/dotfiles",
@@ -21,7 +9,6 @@
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
-  "extensions.ignoreRecommendations": false,
   "files.associations": {
     "*.Jenkinsfile": "groovy"
   },
@@ -30,42 +17,17 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "git.autofetch": true,
-  "git.confirmSync": false,
-  "go.formatTool": "gofmt",
-  "go.useLanguageServer": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "python.formatting.autopep8Args": ["--max-line-length", "300"],
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
+  "material-icon-theme.folders.color": "#90a4ae",
+  "material-icon-theme.folders.theme": "specific",
+  "material-icon-theme.opacity": 1,
+  "material-icon-theme.saturation": 0.7,
   "search.exclude": {
     "**/node_modules": true
   },
-  "sync.gist": "9e0c44bc946e03f885ef58a9d731b861",
   "terminal.integrated.fontFamily": "Fira Code",
-  "terminal.integrated.shell.linux": "/bin/zsh",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "window.restoreWindows": "none",
-  "window.title": "${dirty}${rootName}${separator}${activeFolderMedium}/${activeEditorShort}",
   "workbench.colorTheme": "Dracula",
-  "workbench.editor.closeOnFileDelete": true,
-  "workbench.editorAssociations": [
-    {
-      "filenamePattern": "git-rebase-todo",
-      "viewType": "default"
-    }
-  ],
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "welcomePage",
-  "go.toolsManagement.autoUpdate": true,
-  "material-icon-theme.folders.theme": "specific",
-  "material-icon-theme.folders.color": "#90a4ae",
-  "material-icon-theme.opacity": 1,
-  "material-icon-theme.saturation": 0.7,
-  "peacock.affectTitleBar": false,
-  "peacock.affectStatusBar": false,
-  "peacock.affectTabActiveBorder": true,
-  "openInGitHub.providerType": "github",
-  "window.zoomLevel": -1,
-  "liveshare.audio.joinCallBehavior": "accept"
+  "redhat.telemetry.enabled": true,
+  "explorer.confirmDelete": false,
+  "security.workspace.trust.untrustedFiles": "open"
 }

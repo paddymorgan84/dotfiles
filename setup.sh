@@ -4,12 +4,13 @@ set -e
 set -f
 
 printf "Set up my machine:\n"
-IGNORE_PRE_REQS=${IGNORE_PRE_REQS:-false}
+IGNORE_BREW=${IGNORE_BREW:-false}
 IGNORE_OMZ=${IGNORE_OMZ:-false}
 IGNORE_DOTFILES=${IGNORE_DOTFILES:-false}
+IGNORE_VSCODE=${IGNORE_VSCODE:-false}
 IGNORE_GIT=${IGNORE_GIT:-false}
 IGNORE_SECRETS=${IGNORE_SECRETS:-false}
-printf " - IGNORE_PRE_REQS = %s\n" "${IGNORE_PRE_REQS}"
+printf " - IGNORE_BREW = %s\n" "${IGNORE_BREW}"
 printf " - IGNORE_OMZ      = %s\n" "${IGNORE_OMZ}"
 printf " - IGNORE_DOTFILES = %s\n" "${IGNORE_DOTFILES}"
 printf " - IGNORE_GIT      = %s\n" "${IGNORE_GIT}"
@@ -26,31 +27,30 @@ if [[ ${REMOTE_CONTAINERS} ]] ; then
   IGNORE_SECRETS=true
 fi
 
-
 ###
-# Install pre-requisites
+# Install brew
 ###
-if ! ${IGNORE_PRE_REQS} ; then
-  printf "\n🔧 Installing pre-requisites\n"
-
-  sudo apt-get clean
-  sudo apt-get update
-  sudo apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    gcc \
-    git \
-    gnupg-agent \
-    jq \
-    make \
-    nano \
-    shellcheck \
-    zip \
-    unzip \
-    zsh \
-    software-properties-common
+if ! ${IGNORE_BREW} ; then
+printf "\n🔧 Installing brew\n"
+if [ "$(arch)" = "arm64" ]; then
+  printf "\nRunning on arm64\n"
+  if ! brew --version ; then
+    sudo mkdir -p /opt/homebrew
+    sudo chown -R "$(whoami)":wheel /opt/homebrew
+    curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /opt/homebrew
+  else
+    brew update
+    brew upgrade
+  fi
+else
+  printf "\nRunning on intel\n"
+  if ! brew --version ; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  else
+    brew update
+    brew upgrade
+  fi
 fi
-
 
 ###
 # Install oh my zsh
@@ -64,6 +64,13 @@ if ! ${IGNORE_OMZ} ; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi
 fi
+
+###
+# Install brew formulae
+###
+brew bundle --file ./brew/Brewfile
+brew autoremove
+brew cleanup
 
 
 ###
@@ -86,6 +93,32 @@ if ! ${IGNORE_DOTFILES} ; then
   ln -sf "${PWD}"/git/.gitconfig "${HOME}"/.gitconfig
   mkdir -p "${HOME}"/.config/gh
   ln -sf "${PWD}"/gh/config.yml "${HOME}"/.config/gh/config.yml
+fi
+
+###
+# Configuring VS Code
+###
+if ! ${IGNORE_VSCODE} ; then
+printf "\n🔧  Installing code configuration\n"
+ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" /usr/local/bin/code
+ln -sf "$(pwd)/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+ln -sf "$(pwd)/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
+
+EXTENSIONS=(
+  donjayamanne.githistory
+  dracula-theme.theme-dracula
+  eamodio.gitlens
+  esbenp.prettier-vscode
+  golang.go
+  hashicorp.terraform
+  ms-kubernetes-tools.vscode-kubernetes-tools
+  ms-vscode-remote.remote-containers
+  PKief.material-icon-theme
+  plex.vscode-regolint
+  redhat.vscode-yaml
+  tsandall.opa
+)
+for ext in "${EXTENSIONS[@]}"; do printf "installing: %s\n" "${ext}" && code --install-extension "${ext}" --force; done
 fi
 
 
@@ -116,10 +149,6 @@ if ! ${IGNORE_SECRETS} ; then
     echo "Enter your GitHub PAT";
     read -re pat
     sed -i "s/MYTOKEN/${pat}/g" "${HOME}"/.zshenv
-
-    echo "Enter your GitHub Org";
-    read -re org
-    sed -i "s/MYORG/${org}/g" "${HOME}"/.zshenv
   else
     printf "oh-my-zsh isn't installed, skipping sensitive information\n"
   fi

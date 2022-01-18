@@ -19,11 +19,10 @@ prompt_aws() {
   echo "${my_orange}(☁️  ${AWS_PROFILE})${reset_color}"
 }
 
-
 # primary prompt
 PROMPT='
 ${ret_status} $my_gray $name @ %*%{$reset_color%}%  $FG[032]%~ \
-$(git_prompt_info)$(prompt_aws) \
+$(git_prompt_info)$(prompt_aws) $(kube_ps1) \
 %{$fg_bold[cyan]%}$(tf_prompt_info)%{$reset_color%} \
 $FG[105]%(!.#.»)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
@@ -34,3 +33,11 @@ ZSH_THEME_GIT_PROMPT_PREFIX="$FG[075]($FG[078]"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="$my_orange*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[075])%{$reset_color%}"
+
+# kube-ps1 settings
+KUBE_PS1_CTX_COLOR=cyan
+KUBE_PS1_PREFIX='['
+KUBE_PS1_SUFFIX=']'
+KUBE_PS1_SYMBOL_ENABLE=false
+KUBE_PS1_CTX_COLOR=cyan
+KUBE_PS1_NS_COLOR=178

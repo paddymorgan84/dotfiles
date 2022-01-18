@@ -24,7 +24,7 @@ alias gdns='git diff --name-status'
 alias grmb='git branch --merged master | grep -v "master" | xargs git branch -D'
 
 # Quick folders
-alias work="cd ~/git/emisgroup"
+alias work="cd ~/git/bitbucket"
 alias mine="cd ~/git/paddymorgan84"
 
 # Weather
@@ -36,9 +36,6 @@ alias whatalias='alias | grep '
 # Terraform
 alias tf='terraform'
 
-# EMIS
-alias clone-all-emis-repos='cd ~/git/emisgroup/blacksmiths-hammer/clone-repos && ORG=emisgroup TARGET=~/git/emisgroup ./clone.sh'
-
 # WSL2
 alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
 
@@ -48,8 +45,8 @@ alias drc='docker rm -vf $(docker ps -a -q)' # Remove all stopped docker contain
 alias dri='docker rmi -f $(docker images -a -q)' # Remove all docker images
 
 # VS Code
-alias dotfiles='code ~/git/paddymorgan84/dotfiles'
-alias journal='code ~/git/paddymorgan84/journal'
-alias presentations='code ~/git/paddymorgan84/presentations'
-alias university='code ~/git/paddymorgan84/university'
-alias fplgo='code ~/git/paddymorgan84/fpl'
+alias dotfiles='code ~/git/github/paddymorgan84/dotfiles'
+alias journal='code ~/git/github/paddymorgan84/journal'
+alias presentations='code ~/git/github/paddymorgan84/presentations'
+alias university='code ~/git/github/paddymorgan84/university'
+alias fplgo='code ~/git/github/paddymorgan84/fpl'
