@@ -21,8 +21,9 @@ printf " - IGNORE_SECRETS  = %s\n" "${IGNORE_SECRETS}"
 # Identify if I'm running on VS Code dev container. If I am, I only want the dotfiles.
 ###
 if [[ ${REMOTE_CONTAINERS} ]] ; then
-  IGNORE_PRE_REQS=true
+  IGNORE_BREW=true
   IGNORE_OMZ=true
+  IGNORE_VSCODE=true
   IGNORE_GIT=true
   IGNORE_SECRETS=true
 fi
@@ -53,6 +54,15 @@ else
 fi
 
 ###
+# Install brew formulae
+###
+brew bundle --file ./brew/Brewfile
+brew autoremove
+brew cleanup
+
+fi
+
+###
 # Install oh my zsh
 ###
 if ! ${IGNORE_OMZ} ; then
@@ -64,14 +74,6 @@ if ! ${IGNORE_OMZ} ; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi
 fi
-
-###
-# Install brew formulae
-###
-brew bundle --file ./brew/Brewfile
-brew autoremove
-brew cleanup
-
 
 ###
 # Installing dotfiles
