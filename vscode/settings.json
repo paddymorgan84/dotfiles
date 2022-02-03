@@ -29,5 +29,7 @@
   "workbench.iconTheme": "material-icon-theme",
   "redhat.telemetry.enabled": true,
   "explorer.confirmDelete": false,
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "go.toolsManagement.autoUpdate": true,
+  "terminal.integrated.defaultProfile.osx": "zsh"
 }
