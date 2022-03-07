@@ -5,7 +5,8 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
 
-# Brews
+# Brew
+brew "awscli"
 brew "cmake"
 brew "curl"
 brew "docker", link: false
