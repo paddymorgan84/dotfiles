@@ -106,6 +106,8 @@ source $(brew --prefix nvm)/nvm.sh
 ## Added as part of https://formulae.brew.sh/formula/kube-ps1
 source "$(brew --prefix)/opt/kube-ps1/share/kube-ps1.sh"
 
+## I don't want kube-ps1 on my vscode terminal by default
+if [ "$TERM_PROGRAM" = "vscode" ] ; then kubeoff; fi
 
 ### Load aliases
 if [ -f ~/.aliases ]; then
