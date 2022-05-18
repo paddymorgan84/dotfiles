@@ -31,5 +31,6 @@
   "explorer.confirmDelete": false,
   "security.workspace.trust.untrustedFiles": "open",
   "go.toolsManagement.autoUpdate": true,
-  "terminal.integrated.defaultProfile.osx": "zsh"
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.linux": "zsh"
 }
