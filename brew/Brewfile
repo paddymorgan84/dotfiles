@@ -1,15 +1,16 @@
-# Taps
+## Taps
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
-
-# Brew
+## Brews
+brew "sqlite"
 brew "awscli"
 brew "cmake"
 brew "curl"
 brew "docker", link: false
+brew "python@3.10"
 brew "doitlive"
 brew "gh"
 brew "git"
@@ -19,19 +20,24 @@ brew "helm"
 brew "istioctl"
 brew "jq"
 brew "k9s"
-brew "kube-ps1"
+brew "kind"
 brew "kubernetes-cli"
+brew "kube-ps1"
 brew "minikube"
 brew "nvm"
 brew "terraform"
 brew "watch"
 brew "xsv"
 
-# Casks
+## Casks
+cask "authy"
+cask "azure-data-studio"
 cask "docker"
+cask "dotnet-sdk"
 cask "font-fira-code"
 cask "google-chrome"
 cask "iterm2"
+cask "microsoft-azure-storage-explorer"
 cask "microsoft-remote-desktop"
 cask "obsidian"
 cask "rectangle"
