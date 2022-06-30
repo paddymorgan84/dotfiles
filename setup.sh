@@ -135,7 +135,7 @@ fi
 if ! ${IGNORE_VSCODE} ; then
 printf "\n🔧  Installing code configuration\n"
 ln -sf "$(pwd)/vscode/settings.json" "${HOME}/.vscode-server/data/Machine/settings.json"
-ln -sf "$(pwd)/vscode/keybindings.json" "/mnt/c/Users/pmorgan/AppData/Roaming/Code/User/keybindings.json"
+cp "$(pwd)/vscode/keybindings.json" "/mnt/c/Users/pmorgan/AppData/Roaming/Code/User/keybindings.json"
 
 EXTENSIONS=(
   donjayamanne.githistory
