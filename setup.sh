@@ -8,12 +8,14 @@ IGNORE_BREW=${IGNORE_BREW:-true}
 IGNORE_PRE_REQS=${IGNORE_PRE_REQS:-false}
 IGNORE_OMZ=${IGNORE_OMZ:-false}
 IGNORE_DOTFILES=${IGNORE_DOTFILES:-false}
-IGNORE_VSCODE=${IGNORE_VSCODE:-true}
+IGNORE_VSCODE=${IGNORE_VSCODE:-false}
 IGNORE_GIT=${IGNORE_GIT:-false}
 IGNORE_SECRETS=${IGNORE_SECRETS:-false}
-printf " - IGNORE_BREW = %s\n" "${IGNORE_BREW}"
+printf " - IGNORE_BREW     = %s\n" "${IGNORE_BREW}"
+printf " - IGNORE_PRE_REQS = %s\n" "${IGNORE_PRE_REQS}"
 printf " - IGNORE_OMZ      = %s\n" "${IGNORE_OMZ}"
 printf " - IGNORE_DOTFILES = %s\n" "${IGNORE_DOTFILES}"
+printf " - IGNORE_VSCODE   = %s\n" "${IGNORE_VSCODE}"
 printf " - IGNORE_GIT      = %s\n" "${IGNORE_GIT}"
 printf " - IGNORE_SECRETS  = %s\n" "${IGNORE_SECRETS}"
 
@@ -132,9 +134,8 @@ fi
 ###
 if ! ${IGNORE_VSCODE} ; then
 printf "\n🔧  Installing code configuration\n"
-ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" /usr/local/bin/code
-ln -sf "$(pwd)/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
-ln -sf "$(pwd)/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
+ln -sf "$(pwd)/vscode/settings.json" "${HOME}/.vscode-server/data/Machine/settings.json"
+ln -sf "$(pwd)/vscode/keybindings.json" "/mnt/c/Users/pmorgan/AppData/Roaming/Code/User/keybindings.json"
 
 EXTENSIONS=(
   donjayamanne.githistory
