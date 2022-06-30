@@ -4,10 +4,11 @@ set -e
 set -f
 
 printf "Set up my machine:\n"
-IGNORE_BREW=${IGNORE_BREW:-false}
+IGNORE_BREW=${IGNORE_BREW:-true}
+IGNORE_PRE_REQS=${IGNORE_PRE_REQS:-false}
 IGNORE_OMZ=${IGNORE_OMZ:-false}
 IGNORE_DOTFILES=${IGNORE_DOTFILES:-false}
-IGNORE_VSCODE=${IGNORE_VSCODE:-false}
+IGNORE_VSCODE=${IGNORE_VSCODE:-true}
 IGNORE_GIT=${IGNORE_GIT:-false}
 IGNORE_SECRETS=${IGNORE_SECRETS:-false}
 printf " - IGNORE_BREW = %s\n" "${IGNORE_BREW}"
@@ -60,6 +61,35 @@ brew bundle --file ./brew/Brewfile
 brew autoremove
 brew cleanup
 
+fi
+
+###
+# Install pre-requisites
+###
+if ! ${IGNORE_PRE_REQS} ; then
+  printf "\n🔧 Installing pre-requisites\n"
+
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+  sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+
+  sudo apt-get clean
+  sudo apt-get update
+  sudo apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    gcc \
+    gh \
+    git \
+    gnupg-agent \
+    jq \
+    make \
+    nano \
+    shellcheck \
+    zip \
+    unzip \
+    zsh \
+    software-properties-common
 fi
 
 ###
