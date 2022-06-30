@@ -68,7 +68,7 @@ ZSH_THEME="paddy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws terraform docker kubectl)
+plugins=(git aws terraform docker kubectl kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,14 +97,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-## Added as part of https://formulae.brew.sh/formula/nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-## Added as part of https://formulae.brew.sh/formula/kube-ps1
-source "$(brew --prefix)/opt/kube-ps1/share/kube-ps1.sh"
 
 ## I don't want kube-ps1 on my vscode terminal by default
 if [ "$TERM_PROGRAM" = "vscode" ] ; then kubeoff; fi
