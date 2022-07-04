@@ -4,15 +4,17 @@ set -e
 set -f
 
 printf "Set up my machine:\n"
-IGNORE_BREW=${IGNORE_BREW:-true}
+
 IGNORE_PRE_REQS=${IGNORE_PRE_REQS:-false}
+IGNORE_BREW=${IGNORE_BREW:-true}
 IGNORE_OMZ=${IGNORE_OMZ:-false}
 IGNORE_DOTFILES=${IGNORE_DOTFILES:-false}
 IGNORE_VSCODE=${IGNORE_VSCODE:-false}
 IGNORE_GIT=${IGNORE_GIT:-false}
 IGNORE_SECRETS=${IGNORE_SECRETS:-false}
-printf " - IGNORE_BREW     = %s\n" "${IGNORE_BREW}"
+
 printf " - IGNORE_PRE_REQS = %s\n" "${IGNORE_PRE_REQS}"
+printf " - IGNORE_BREW     = %s\n" "${IGNORE_BREW}"
 printf " - IGNORE_OMZ      = %s\n" "${IGNORE_OMZ}"
 printf " - IGNORE_DOTFILES = %s\n" "${IGNORE_DOTFILES}"
 printf " - IGNORE_VSCODE   = %s\n" "${IGNORE_VSCODE}"
@@ -32,67 +34,37 @@ if [ ${REMOTE_CONTAINERS} ] || [ ${CODESPACES} ] ; then
 fi
 
 ###
-# Install brew
-###
-if ! ${IGNORE_BREW} ; then
-printf "\n🔧 Installing brew\n"
-if [ "$(arch)" = "arm64" ]; then
-  printf "\nRunning on arm64\n"
-  if ! brew --version ; then
-    sudo mkdir -p /opt/homebrew
-    sudo chown -R "$(whoami)":wheel /opt/homebrew
-    curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /opt/homebrew
-  else
-    brew update
-    brew upgrade
-  fi
-else
-  printf "\nRunning on intel\n"
-  if ! brew --version ; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  else
-    brew update
-    brew upgrade
-  fi
-fi
-
-###
-# Install brew formulae
-###
-brew bundle --file ./brew/Brewfile
-brew autoremove
-brew cleanup
-
-fi
-
-###
 # Install pre-requisites
 ###
 if ! ${IGNORE_PRE_REQS} ; then
   printf "\n🔧 Installing pre-requisites\n"
 
-  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-  sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-
   sudo apt-get clean
   sudo apt-get update
   sudo apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    gcc \
-    gh \
-    git \
+    g++ \
     gnupg-agent \
-    jq \
-    make \
-    nano \
-    shellcheck \
-    zip \
-    unzip \
-    zsh \
     software-properties-common
 fi
+
+###
+# Install brew
+###
+if ! ${IGNORE_BREW} ; then
+  printf "\n🔧 Installing brew\n"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  BREWFOLDER=$([ "${WSL_DISTRO_NAME}" ] && echo "linux" || echo "mac")
+
+  ###
+  # Install brew formulae
+  ###
+  brew bundle --file "${PWD}"/brew/"${BREWFOLDER}"/Brewfile
+  brew autoremove
+  brew cleanup
+
+fi
+
 
 ###
 # Install oh my zsh
