@@ -1,0 +1,21 @@
+## Taps
+tap "homebrew/bundle"
+tap "homebrew/core"
+
+## Brews
+brew "ca-certificates"
+brew "curl"
+brew "gcc"
+brew "gh"
+brew "git"
+brew "jq"
+brew "make"
+brew "nvm"
+brew "k9s"
+brew "kubernetes-cli"
+brew "make"
+brew "nano"
+brew "shellcheck"
+brew "unzip"
+brew "zip"
+brew "zsh"
