@@ -25,7 +25,7 @@ printf " - IGNORE_SECRETS  = %s\n" "${IGNORE_SECRETS}"
 ###
 # Identify if I'm running on VS Code dev container or GitHub Codespaces. If I am, I only want the dotfiles.
 ###
-if [ ${REMOTE_CONTAINERS} ] || [ ${CODESPACES} ] ; then
+if [ "${REMOTE_CONTAINERS}" ] || [ "${CODESPACES}" ] ; then
   IGNORE_BREW=true
   IGNORE_OMZ=true
   IGNORE_VSCODE=true
