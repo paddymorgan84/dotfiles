@@ -36,6 +36,9 @@ alias whatalias='alias | grep '
 
 # Terraform
 alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
 
 # WSL2
 alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\""
