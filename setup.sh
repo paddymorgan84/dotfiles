@@ -160,16 +160,8 @@ fi
 ###
 if ! ${IGNORE_GIT} ; then
   printf "\n🔧 Installing git configuration\n"
-  if [ ! -f "${HOME}/.gitconfig.local" ] ; then
-    cp git/.gitconfig.local "${HOME}/.gitconfig.local"
-
-    echo "Enter your full name";
-    read -re var
-    sed -i "s/GITNAME/${var}/" "${HOME}/.gitconfig.local"
-
-    echo "Enter your email address";
-    read -re var
-    sed -i "s/GITEMAIL/${var}/" "${HOME}/.gitconfig.local"
+  if [ ! -f "${HOME}/git/work/.gitconfig.work" ] ; then
+    cp git/.gitconfig.local "${HOME}/.gitconfig.work"
   fi
 fi
 
