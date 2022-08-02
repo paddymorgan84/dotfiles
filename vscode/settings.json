@@ -33,5 +33,8 @@
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.linux": "zsh",
-  "vscode-kubernetes.kubectl-path.linux": "/home/linuxbrew/.linuxbrew/bin/kubectl"
+  "vscode-kubernetes.kubectl-path.linux": "/home/linuxbrew/.linuxbrew/bin/kubectl",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  }
 }
