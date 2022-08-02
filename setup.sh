@@ -54,7 +54,24 @@ if ! ${IGNORE_BREW} ; then
   printf "\n🔧 Installing brew\n"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+  test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  test -r ~/.profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
+  echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
+
   BREWFOLDER=$([ "${WSL_DISTRO_NAME}" ] && echo "linux" || echo "mac")
+
+  ###
+  # Perform NVM post install steps
+  ###
+
+  if [ ! -d "~./nvm" ]
+  then
+    mkdir ~/.nvm
+    echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.profile
+    echo "[ -s \"/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh\" ] && \. \"/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh\"" >> ~/.profile
+    echo "[ -s \"/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm\" ] && \. \"/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm\""  # This loads nvm bash_completion
+  fi
 
   ###
   # Install brew formulae
