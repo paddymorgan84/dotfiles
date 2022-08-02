@@ -25,8 +25,8 @@ alias grmb='git branch --merged develop | egrep -v '"'"'(master|develop)'"'"' | 
 alias gundo='git reset --soft HEAD~1'
 
 # Quick folders
-alias work="cd ~/git/azure"
-alias mine="cd ~/git/github/paddymorgan84"
+alias work="cd ~/git/work/azure"
+alias mine="cd ~/git/personal/github/paddymorgan84"
 
 # Weather
 alias weather='curl wttr.in'
