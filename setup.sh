@@ -150,7 +150,8 @@ fi
 if ! ${IGNORE_GIT} ; then
   printf "\n🔧 Installing git configuration\n"
   if [ ! -f "${HOME}/git/work/.gitconfig.work" ] ; then
-    cp git/.gitconfig.local "${HOME}/.gitconfig.work"
+    mkdir -p "${HOME}/git/work"
+    cp git/.gitconfig.work "${HOME}/git/work/.gitconfig.work"
   fi
 fi
 
