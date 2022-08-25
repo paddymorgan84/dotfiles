@@ -71,7 +71,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws terraform docker kubectl kube-ps1)
+plugins=(git aws terraform docker kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,9 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-## I don't want kube-ps1 on my vscode terminal by default
-if [ "$TERM_PROGRAM" = "vscode" ] ; then kubeoff; fi
 
 ### Load aliases
 if [ -f ~/.aliases ]; then

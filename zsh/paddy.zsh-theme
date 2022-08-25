@@ -22,7 +22,7 @@ prompt_aws() {
 # primary prompt
 PROMPT='
 ${ret_status} $my_gray $name @ %*%{$reset_color%}%  $FG[032]%~ \
-$(git_prompt_info)$(prompt_aws) $(kube_ps1) \
+$(git_prompt_info)$(prompt_aws) \
 %{$fg_bold[cyan]%}$(tf_prompt_info)%{$reset_color%} \
 $FG[105]%(!.#.»)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
