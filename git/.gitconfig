@@ -16,3 +16,5 @@
     cmd = code --wait --diff $LOCAL $REMOTE
 [pull]
 	rebase = false
+[push]
+	autoSetupRemote = true
