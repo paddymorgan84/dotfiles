@@ -12,6 +12,7 @@ IGNORE_DOTFILES=${IGNORE_DOTFILES:-false}
 IGNORE_VSCODE=${IGNORE_VSCODE:-false}
 IGNORE_GIT=${IGNORE_GIT:-false}
 IGNORE_SECRETS=${IGNORE_SECRETS:-false}
+IGNORE_DOTNET=${IGNORE_DOTNET:-false}
 
 printf " - IGNORE_PRE_REQS = %s\n" "${IGNORE_PRE_REQS}"
 printf " - IGNORE_BREW     = %s\n" "${IGNORE_BREW}"
@@ -20,6 +21,7 @@ printf " - IGNORE_DOTFILES = %s\n" "${IGNORE_DOTFILES}"
 printf " - IGNORE_VSCODE   = %s\n" "${IGNORE_VSCODE}"
 printf " - IGNORE_GIT      = %s\n" "${IGNORE_GIT}"
 printf " - IGNORE_SECRETS  = %s\n" "${IGNORE_SECRETS}"
+printf " - IGNORE_DOTNET   = %s\n" "${IGNORE_DOTNET}"
 
 
 ###
@@ -167,4 +169,14 @@ if ! ${IGNORE_SECRETS} ; then
   else
     printf "oh-my-zsh isn't installed, skipping sensitive information\n"
   fi
+fi
+
+###
+# Install dotnet - this cannot be done
+###
+if ! ${IGNORE_DOTNET} ; then
+  printf "\n🔧 Installing dotnet\n"
+  wget https://dot.net/v1/dotnet-install.sh
+  sudo chmod +x ./dotnet-install.sh
+  ./dotnet-install.sh -c Current
 fi
