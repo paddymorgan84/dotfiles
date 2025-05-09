@@ -13,15 +13,17 @@ IGNORE_VSCODE=${IGNORE_VSCODE:-false}
 IGNORE_GIT=${IGNORE_GIT:-false}
 IGNORE_SECRETS=${IGNORE_SECRETS:-false}
 IGNORE_DOTNET=${IGNORE_DOTNET:-false}
+IGNORE_TERRAFORM=${IGNORE_TERRAFORM:-false}
 
-printf " - IGNORE_PRE_REQS = %s\n" "${IGNORE_PRE_REQS}"
-printf " - IGNORE_BREW     = %s\n" "${IGNORE_BREW}"
-printf " - IGNORE_OMZ      = %s\n" "${IGNORE_OMZ}"
-printf " - IGNORE_DOTFILES = %s\n" "${IGNORE_DOTFILES}"
-printf " - IGNORE_VSCODE   = %s\n" "${IGNORE_VSCODE}"
-printf " - IGNORE_GIT      = %s\n" "${IGNORE_GIT}"
-printf " - IGNORE_SECRETS  = %s\n" "${IGNORE_SECRETS}"
-printf " - IGNORE_DOTNET   = %s\n" "${IGNORE_DOTNET}"
+printf " - IGNORE_PRE_REQS  = %s\n" "${IGNORE_PRE_REQS}"
+printf " - IGNORE_BREW      = %s\n" "${IGNORE_BREW}"
+printf " - IGNORE_OMZ       = %s\n" "${IGNORE_OMZ}"
+printf " - IGNORE_DOTFILES  = %s\n" "${IGNORE_DOTFILES}"
+printf " - IGNORE_VSCODE    = %s\n" "${IGNORE_VSCODE}"
+printf " - IGNORE_GIT       = %s\n" "${IGNORE_GIT}"
+printf " - IGNORE_SECRETS   = %s\n" "${IGNORE_SECRETS}"
+printf " - IGNORE_DOTNET    = %s\n" "${IGNORE_DOTNET}"
+printf " - IGNORE_TERRAFORM = %s\n" "${IGNORE_TERRAFORM}"
 
 
 ###
@@ -33,6 +35,7 @@ if [ "${REMOTE_CONTAINERS}" ] || [ "${CODESPACES}" ] ; then
   IGNORE_VSCODE=true
   IGNORE_GIT=true
   IGNORE_SECRETS=true
+  IGNORE_TERRAFORM=true
 fi
 
 ###
@@ -67,7 +70,7 @@ if ! ${IGNORE_BREW} ; then
   # Perform NVM post install steps
   ###
 
-  if [ ! -d "~./nvm" ]
+  if [ ! -d "$HOME/.nvm" ]
   then
     mkdir ~/.nvm
     echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.profile
@@ -179,4 +182,36 @@ if ! ${IGNORE_DOTNET} ; then
   wget https://dot.net/v1/dotnet-install.sh
   sudo chmod +x ./dotnet-install.sh
   ./dotnet-install.sh -c Current
+fi
+
+###
+# Install Terraform
+###
+
+if ! ${IGNORE_TERRAFORM} ; then
+  # Only add GPG key if it's not already installed
+  if ! gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --list-keys > /dev/null 2>&1; then
+    echo "[+] Adding HashiCorp GPG key..."
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  else
+    echo "[=] GPG key already exists."
+  fi
+
+  # Only add repo if it's not already present
+  if ! grep -q "^deb .*hashicorp" /etc/apt/sources.list.d/hashicorp.list 2>/dev/null; then
+    echo "[+] Adding HashiCorp APT repository..."
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+      | sudo tee /etc/apt/sources.list.d/hashicorp.list > /dev/null
+  else
+    echo "[=] HashiCorp APT repository already present."
+  fi
+
+  # Only install if Terraform is not already installed
+  if ! command -v terraform >/dev/null; then
+    echo "[+] Installing Terraform..."
+    sudo apt-get update -y
+    sudo apt-get install -y terraform
+  else
+    echo "[=] Terraform already installed: $(terraform version | head -n1)"
+  fi
 fi
