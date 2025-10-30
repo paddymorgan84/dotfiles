@@ -41,7 +41,7 @@
   "go.formatTool": "gofmt",
   "diffEditor.ignoreTrimWhitespace": false,
   "git.mergeEditor": false,
-  "workbench.colorTheme": "Dracula",
+  "workbench.colorTheme": "Dracula Theme",
   "omnisharp.enableImportCompletion": true,
   "omnisharp.enableEditorConfigSupport": true,
   "omnisharp.autoStart": true,

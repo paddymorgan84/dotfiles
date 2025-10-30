@@ -106,3 +106,56 @@ function reset-aws-creds()
     unset AWS_SECRET_ACCESS_KEY
     unset AWS_SESSION_TOKEN
 }
+
+
+##
+# Configure Azure portal environment and jump to corresponding VM
+#
+
+# Azure subscription mapping
+declare -A AZ_SUBS=(
+  [dev]="xxx"
+  [qat]="xxx"
+  [ppe]="xxx"
+  [prd]="xxx"
+)
+
+# Function to switch subscription
+azenv() {
+  local env="$1"
+  if [[ -z "$env" ]]; then
+    echo "Usage: azenv {dev|qat|ppe|prd}"
+    return 1
+  fi
+  if [[ -z "${AZ_SUBS[$env]}" ]]; then
+    echo "Unknown environment: $env"
+    return 1
+  fi
+  az account set --subscription "${AZ_SUBS[$env]}"
+}
+
+# Function to access linux jump box
+azjump() {
+  local env="$1"
+  if [[ -z "$env" ]]; then
+    echo "Usage: azjump {dev|qat|ppe|prd}"
+    return 1
+  fi
+
+  case "$env" in
+    dev|qat)
+      rg="main-shared-infrastructure"
+      vm="main-jump-box"
+      ;;
+    ppe|prd)
+      rg="uk-shared-infrastructure"
+      vm="uk-jump-box"
+      ;;
+    *)
+      echo "Unknown environment: $env"
+      return 1
+      ;;
+  esac
+
+  azenv "$env" && az ssh vm --resource-group "$rg" --name "$vm"
+}

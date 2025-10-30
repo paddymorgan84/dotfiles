@@ -54,3 +54,6 @@ alias journal='code ~/git/github/paddymorgan84/journal'
 alias presentations='code ~/git/github/paddymorgan84/presentations'
 alias university='code ~/git/github/paddymorgan84/university'
 alias fplgo='code ~/git/github/paddymorgan84/fpl'
+
+# Azure CLI
+alias azlogin='az login --use-device-code'
